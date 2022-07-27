@@ -15,8 +15,8 @@
   <script>
 
 var cat1 = [
-  "https://lichess.org/study/embed/zvEUaaAA/xUDJsKFE?bg=dark",
-  "https://lichess.org/study/embed/zvEUaaAA/hnfqLOC9?bg=dark",
+  "https://lichess.org/study/embed/zvEUaaAA/xUDJsKFE",
+  "https://lichess.org/study/embed/zvEUaaAA/hnfqLOC9",
 ];
 
 var cat2 = [
@@ -89,7 +89,7 @@ function getRandomUrl(myFrame) {
   var index2 = Math.floor(Math.random() * cat2.length);
   var index3 = Math.floor(Math.random() * cat3.length);
 
-  var url = cat1[index1]+"&theme="+cat2[index2]+"&pieceSet="+cat3[index3];
+  var url = cat1[index1]+"&theme="+cat2[index2]+"&pieceSet="+cat3[index3]+"&bg=dark";
   myFrame.src = url;
 }
 
