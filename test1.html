@@ -1,0 +1,111 @@
+<html>
+
+<head>
+
+</head>
+
+<body bgcolor="#000000">
+
+<p><button onClick="window.location.reload();">Refresh</button>
+</p>
+
+  <iframe class="frame" src="" style="width:600px; height: 371px" frameborder=0></iframe>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+var cat1 = [
+  "https://lichess.org/study/embed/zvEUaaAA/xUDJsKFE?bg=dark",
+  "https://lichess.org/study/embed/zvEUaaAA/hnfqLOC9?bg=dark",
+];
+
+var cat2 = [
+    "blue",
+    "blue2",
+    "blue3",
+    "blue-marble",
+    "canvas",
+    "wood",
+    "wood2",
+    "wood3",
+    "wood4",
+    "maple",
+    "maple2",
+    "brown",
+    "leather",
+    "green",
+    "marble",
+    "green-plastic",
+    "grey",
+    "metal",
+    "olive",
+    "newspaper",
+    "purple",
+    "purple-diag",
+    "pink",
+    "ic",
+    "horsey",
+];
+
+var cat3 = [
+    "cburnett",
+    "merida",
+    "alpha",
+    "pirouetti",
+    "chessnut",
+    "chess7",
+    "reillycraig",
+    "companion",
+    "riohacha",
+    "kosal",
+    "leipzig",
+    "fantasy",
+    "spatial",
+    "california",
+    "pixel",
+    "maestro",
+    "fresca",
+    "cardinal",
+    "gioco",
+    "tatiana",
+    "staunty",
+    "governor",
+    "dubrovny",
+    "icpieces",
+    "shapes",
+    "letter",
+    "horsey",
+    "anarcandy",
+];
+
+
+//blue, blue2, blue3, blue-marble, canvas, wood, wood2, wood3, wood4, maple, maple2, brown, leather, green, marble, green-plastic, grey, metal, olive, newspaper, purple, purple-diag, pink, ic, horsey
+//cburnett, merida, alpha, pirouetti, chessnut, chess7, reillycraig, companion, riohacha, kosal, leipzig, fantasy, spatial, california, pixel, maestro, fresca, cardinal, gioco, tatiana, staunty, governor, dubrovny, icpieces, shapes, letter, horsey, anarcandy
+
+var myFrame = document.getElementsByClassName("frame")[0];
+
+function getRandomUrl(myFrame) {
+  var index1 = Math.floor(Math.random() * cat1.length);
+  var index2 = Math.floor(Math.random() * cat2.length);
+  var index3 = Math.floor(Math.random() * cat3.length);
+
+  var url = cat1[index1]+"&theme="+cat2[index2]+"&pieceSet="+cat3[index3];
+  myFrame.src = url;
+}
+
+function codeAddress() {
+  getRandomUrl(myFrame);
+}
+
+codeAddress();
+
+console.log(myFrame.src);
+
+
+  </script>
+  <script type="text/javascript">
+    codeAddress();
+  </script>
+</body>
+
+</html>
