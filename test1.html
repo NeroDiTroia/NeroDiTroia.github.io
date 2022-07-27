@@ -89,7 +89,7 @@ function getRandomUrl(myFrame) {
   var index2 = Math.floor(Math.random() * cat2.length);
   var index3 = Math.floor(Math.random() * cat3.length);
 
-  var url = cat1[index1]+"&theme="+cat2[index2]+"&pieceSet="+cat3[index3]+"&bg=dark";
+  var url = cat1[index1]+"?theme="+cat2[index2]+"&pieceSet="+cat3[index3]+"&bg=dark";
   myFrame.src = url;
 }
 
