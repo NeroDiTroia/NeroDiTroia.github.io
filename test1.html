@@ -19,12 +19,20 @@ var cat1 = [
 "https://lichess.org/study/embed/zi7k3Rgo/aReHB653",
 "https://lichess.org/study/embed/zi7k3Rgo/kJS3fQsN",
 "https://lichess.org/study/embed/zi7k3Rgo/NkGuBWbp",
-"https://lichess.org/study/embed/zi7k3Rgo/hI7cviSR",
 "https://lichess.org/study/embed/zi7k3Rgo/ybosAPLr",
 "https://lichess.org/study/embed/zi7k3Rgo/QCeN1hgq",
+"https://lichess.org/study/embed/zi7k3Rgo/KlSnVwjr",
+"https://lichess.org/study/embed/zi7k3Rgo/H6BgduX5",
 ];
     
-   
+/*
+import urllib.request
+urllib.request.urlretrieve("https://lichess.org/study/zi7k3Rgo.pgn" , "temp.pgn")
+with open( "temp.pgn" ) as f:
+	c = f.readlines()	
+for u in [l.split('"')[1].replace('/study/','/study/embed/') for l in c if 'Site' in l]:
+	print( '"'+u+'",' )
+  */
 
 var cat2 = [
     "blue",
