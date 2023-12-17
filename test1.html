@@ -14,7 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
 
-var cat1 = [
+var list_chapters = [
 "https://lichess.org/study/embed/zi7k3Rgo/pHdmJfy6",
 "https://lichess.org/study/embed/zi7k3Rgo/aReHB653",
 "https://lichess.org/study/embed/zi7k3Rgo/kJS3fQsN",
@@ -51,7 +51,7 @@ for u in [l.split('"')[1].replace('/study/','/study/embed/') for l in c if 'Site
 
   */
 
-var cat2 = [
+var list_boards = [
     "blue",
     "blue2",
     "blue3",
@@ -79,7 +79,7 @@ var cat2 = [
     "horsey",
 ];
 
-var cat3 = [
+var list_pieces = [
     "cburnett",
     "merida",
     "alpha",
@@ -121,7 +121,7 @@ function getRandomUrl(myFrame) {
   var index2 = Math.floor(Math.random() * cat2.length);
   var index3 = Math.floor(Math.random() * cat3.length);
 
-  var url = cat1[index1]+"?theme="+cat2[index2]+"&pieceSet="+cat3[index3]+"&bg=dark";
+  var url = list_chapters[index1]+"?theme="+list_boards[index2]+"&pieceSet="+list_pieces[index3]+"&bg=dark";
   myFrame.src = url;
 }
 
