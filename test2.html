@@ -9,8 +9,13 @@
 <p><input id="checkboxOne" type="checkbox"> Englund + Charlick
 <input id="checkboxTwo" type="checkbox"> Vienna Copycat</p>
 
+<p><input id="checkboxThree" type="checkbox"> Scandi</p>
+
 
   <iframe class="frame" src="" style="width:600px; height: 371px" frameborder=0></iframe>
+  
+<p><input id="checkboxDisguised" type="checkbox"> disguised</p>
+
   
 <p> <pre> &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; <button onClick="codeAddress();">Pick</button> </pre> </p>
   
@@ -18,50 +23,30 @@
   <script>
 
 
-var listChapEnglundCharlick = [
-"https://lichess.org/study/embed/MMJbvvup/t3WMSDEP",
-"https://lichess.org/study/embed/MMJbvvup/G57B07Yy",
-"https://lichess.org/study/embed/MMJbvvup/ExW3Oqfu",
-"https://lichess.org/study/embed/MMJbvvup/GOp5kKXy",
-"https://lichess.org/study/embed/MMJbvvup/0cNeUaSg",
-"https://lichess.org/study/embed/MMJbvvup/8tfCePFN",
-"https://lichess.org/study/embed/MMJbvvup/gUR5XgqL",
-"https://lichess.org/study/embed/MMJbvvup/qPxdFlT2",
-"https://lichess.org/study/embed/MMJbvvup/4Asvjxcr",
-"https://lichess.org/study/embed/MMJbvvup/4AIUgvmY",
-"https://lichess.org/study/embed/MMJbvvup/2mCNhmyA",
-"https://lichess.org/study/embed/MMJbvvup/0r1LyzmU",
-"https://lichess.org/study/embed/MMJbvvup/4WK10g2U",
-"https://lichess.org/study/embed/MMJbvvup/m0L2KCXN",
-"https://lichess.org/study/embed/MMJbvvup/NBlrDVxZ",
-"https://lichess.org/study/embed/MMJbvvup/SuH83t9S",
-"https://lichess.org/study/embed/MMJbvvup/Yt1ZNYGv",
-"https://lichess.org/study/embed/MMJbvvup/DhLirAwu",
-"https://lichess.org/study/embed/MMJbvvup/g1aRqzLX",
-"https://lichess.org/study/embed/MMJbvvup/sC99h2M4",
-"https://lichess.org/study/embed/MMJbvvup/UvzGLD9v",
-"https://lichess.org/study/embed/MMJbvvup/iYsBqYFM",
-"https://lichess.org/study/embed/MMJbvvup/WPwA00yV",
-"https://lichess.org/study/embed/MMJbvvup/SOoNtzzx",
-"https://lichess.org/study/embed/MMJbvvup/ttdGlX78",
-"https://lichess.org/study/embed/MMJbvvup/ET2lIXP1",
-];
 
-var listChapViennaCopycat = [
-"https://lichess.org/study/embed/5YPjASv5/bUUyTeHo",
-"https://lichess.org/study/embed/5YPjASv5/3DBAKSU9",
-"https://lichess.org/study/embed/5YPjASv5/FOOEgFOE",
-"https://lichess.org/study/embed/5YPjASv5/2P12H25u",
-"https://lichess.org/study/embed/5YPjASv5/6E7jj61Q",
-"https://lichess.org/study/embed/5YPjASv5/dcDzHbtj",
-"https://lichess.org/study/embed/5YPjASv5/VyqEqlyx",
-"https://lichess.org/study/embed/5YPjASv5/BlILodfy",
-"https://lichess.org/study/embed/5YPjASv5/Zp4BIoVZ",
-"https://lichess.org/study/embed/5YPjASv5/ceKSsSL0",
-"https://lichess.org/study/embed/5YPjASv5/6SMB1hBI",
-"https://lichess.org/study/embed/5YPjASv5/xCZFi8Xv",
-];
-    
+function listOfChapters(URL) {
+    var request = new XMLHttpRequest();
+    request.open("GET", URL, false); // `false` makes the request synchronous
+    request.send(null);
+    if (request.status === 200) {
+      console.log(request.responseText);
+      var allLines = request.responseText.split('\n');
+    }
+    var startsWithSite = allLines.filter((foo) => foo.startsWith("[Site "));
+    var listChapters = startsWithSite.map(x =>x
+        .replace("[Site ", '')
+        .replace('"]', '')
+        .replace('"', '')
+        .replace('/study/', '/study/embed/') 
+    );
+    return(listChapters);
+}
+
+
+const listChapEnglundCharlick = listOfChapters("https://lichess.org/api/study/MMJbvvup.pgn");
+const listChapViennaCopycat = listOfChapters("https://lichess.org/api/study/5YPjASv5.pgn");
+const listChapScandi = listOfChapters("https://lichess.org/api/study/jjqwfIQv.pgn");
+
 
 
 var listBoards = [
@@ -121,6 +106,8 @@ var listPieces = [
     "letter",
     "horsey",
     "anarcandy",
+    "disguised",
+    "disguised",
 ];
 
 
@@ -132,6 +119,9 @@ function getRandomUrl(myFrame) {
 
   var index2 = Math.floor(Math.random() * listBoards.length);
   var index3 = Math.floor(Math.random() * listPieces.length);
+  if( checkboxDisguised.checked ){
+    var index3 = listPieces.length-1;
+  }
   
   var listChaptersSelected = [];
   if( checkboxOne.checked ){
@@ -139,6 +129,9 @@ function getRandomUrl(myFrame) {
   }
   if( checkboxTwo.checked ){
     var listChaptersSelected = listChaptersSelected.concat(listChapViennaCopycat);
+  }
+  if( checkboxThree.checked ){
+    var listChaptersSelected = listChaptersSelected.concat(listChapScandi);
   }
   if (listChaptersSelected.length==0){
   	var listChaptersSelected = [].concat(listChapViennaCopycat, listChapEnglundCharlick);
