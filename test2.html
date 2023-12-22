@@ -9,7 +9,7 @@
 <p><input id="checkboxOne" type="checkbox"> Englund + Charlick
 <input id="checkboxTwo" type="checkbox"> Vienna Copycat</p>
 
-<p><input id="checkboxThree" type="checkbox"> Scandi</p>
+<p><input id="checkboxThree" type="checkbox"> Scandi no Q <input id="checkboxFour" type="checkbox"> Scandi Q</p>
 
 
   <iframe class="frame" src="" style="width:600px; height: 371px" frameborder=0></iframe>
@@ -45,7 +45,8 @@ function listOfChapters(URL) {
 
 const listChapEnglundCharlick = listOfChapters("https://lichess.org/api/study/MMJbvvup.pgn");
 const listChapViennaCopycat = listOfChapters("https://lichess.org/api/study/5YPjASv5.pgn");
-const listChapScandi = listOfChapters("https://lichess.org/api/study/jjqwfIQv.pgn");
+const listChapScandiNoQ = listOfChapters("https://lichess.org/api/study/jjqwfIQv.pgn");
+const listChapScandiYesQ = listOfChapters("https://lichess.org/api/study/wzkG755R.pgn");
 
 
 
@@ -107,6 +108,7 @@ var listPieces = [
     "horsey",
     "anarcandy",
     "disguised",
+    "disguised",
 ];
 
 
@@ -130,10 +132,13 @@ function getRandomUrl(myFrame) {
     var listChaptersSelected = listChaptersSelected.concat(listChapViennaCopycat);
   }
   if( checkboxThree.checked ){
-    var listChaptersSelected = listChaptersSelected.concat(listChapScandi);
+    var listChaptersSelected = listChaptersSelected.concat(listChapScandiNoQ);
+  }
+  if( checkboxFour.checked ){
+    var listChaptersSelected = listChaptersSelected.concat(listChapScandiYesQ);
   }
   if (listChaptersSelected.length==0){
-  	var listChaptersSelected = [].concat(listChapViennaCopycat, listChapEnglundCharlick);
+  	var listChaptersSelected = [].concat(listChapViennaCopycat, listChapEnglundCharlick, listChapScandiNoQ,listChapScandiYesQ);
   }
 
   var index1 = Math.floor(Math.random() * listChaptersSelected.length);  
