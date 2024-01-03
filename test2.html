@@ -11,6 +11,8 @@
 
 <p><input id="checkboxThree" type="checkbox"> Scandi no Q <input id="checkboxFour" type="checkbox"> Scandi Q</p>
 
+<p><input id="checkboxFive" type="checkbox"> Caro-Kann  </p>
+
 
   <iframe class="frame" src="" style="width:600px; height: 371px" frameborder=0></iframe>
   
@@ -47,6 +49,7 @@ const listChapEnglundCharlick = listOfChapters("https://lichess.org/api/study/MM
 const listChapViennaCopycat = listOfChapters("https://lichess.org/api/study/5YPjASv5.pgn");
 const listChapScandiNoQ = listOfChapters("https://lichess.org/api/study/jjqwfIQv.pgn");
 const listChapScandiYesQ = listOfChapters("https://lichess.org/api/study/wzkG755R.pgn");
+const listChapCaroKann = listOfChapters("https://lichess.org/api/study/BJCHl9AI.pgn");
 
 
 
@@ -137,8 +140,11 @@ function getRandomUrl(myFrame) {
   if( checkboxFour.checked ){
     var listChaptersSelected = listChaptersSelected.concat(listChapScandiYesQ);
   }
+  if( checkboxFive.checked ){
+    var listChaptersSelected = listChaptersSelected.concat(listChapCaroKann);
+  }
   if (listChaptersSelected.length==0){
-  	var listChaptersSelected = [].concat(listChapViennaCopycat, listChapEnglundCharlick, listChapScandiNoQ,listChapScandiYesQ);
+  	var listChaptersSelected = [].concat(listChapViennaCopycat, listChapEnglundCharlick, listChapScandiNoQ,listChapScandiYesQ,listChapCaroKann);
   }
 
   var index1 = Math.floor(Math.random() * listChaptersSelected.length);  
